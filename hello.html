@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="wf.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="demo" id="demo">
+            <h2>Download Now</h2>
+        </div>
+        <span class="material-symbols-outlined">
+            download
+        </span>
+        <div class="com" id="completed">
+            <h3>Download Completed</h3>
+            
+        </div>
+    </div>
+
+    <script>
+        const demoButton = document.getElementById('demo');
+        const completedMessage = document.getElementById('completed');
+
+        demoButton.addEventListener('click', function() {
+            
+            demoButton.style.width = '600px';
+            demoButton.style.transition = 'width 0.5s ease';
+
+           
+            setTimeout(function() {
+                updateProgress(25);
+                setTimeout(function() {
+                    updateProgress(50);
+                    setTimeout(function() {
+                        updateProgress(100);
+                       
+                        completedMessage.style.display = 'block';
+                       
+                        setTimeout(function() {
+                            demoButton.style.width = '250px';
+                            completedMessage.style.display = 'none';
+                        }, 2000); 
+                    }, 2000); 
+                }, 2000); 
+            }, 3000); 
+        });
+
+        // Function to update download progress
+        function updateProgress(progress) {
+            
+            const progressText = document.createElement('p');
+            progressText.textContent = progress + '% downloaded';
+            completedMessage.innerHTML = ''; 
+            completedMessage.appendChild(progressText);
+        }
+    </script>
+</body>
+
+</html>
